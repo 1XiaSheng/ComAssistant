@@ -106,6 +106,10 @@ namespace ComAssistant {
 	private: System::Windows::Forms::Label^  label5;
 	private: System::Windows::Forms::Button^  portSetOk;
 	private: System::Windows::Forms::ComboBox^  comboBox6;
+	private: System::Windows::Forms::ToolStrip^  toolStrip1;
+	private: System::Windows::Forms::ToolStripButton^  toolStripButton1;
+	private: System::Windows::Forms::ToolStripButton^  toolStripButton2;
+	private: System::Windows::Forms::ToolStripButton^  toolStripButton3;
 
 
 
@@ -140,6 +144,7 @@ namespace ComAssistant {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(MainForm::typeid));
 			this->menuStripMain = (gcnew System::Windows::Forms::MenuStrip());
 			this->mainToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->wellcomeToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -189,6 +194,10 @@ namespace ComAssistant {
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->lport = (gcnew System::Windows::Forms::Label());
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
+			this->toolStrip1 = (gcnew System::Windows::Forms::ToolStrip());
+			this->toolStripButton1 = (gcnew System::Windows::Forms::ToolStripButton());
+			this->toolStripButton2 = (gcnew System::Windows::Forms::ToolStripButton());
+			this->toolStripButton3 = (gcnew System::Windows::Forms::ToolStripButton());
 			this->menuStripMain->SuspendLayout();
 			this->statusStrip1->SuspendLayout();
 			this->groupBoxCom->SuspendLayout();
@@ -197,6 +206,7 @@ namespace ComAssistant {
 			this->groupBox7->SuspendLayout();
 			this->groupBoxComSm->SuspendLayout();
 			this->groupBoxComPort->SuspendLayout();
+			this->toolStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// menuStripMain
@@ -208,7 +218,7 @@ namespace ComAssistant {
 			});
 			this->menuStripMain->Location = System::Drawing::Point(0, 0);
 			this->menuStripMain->Name = L"menuStripMain";
-			this->menuStripMain->Size = System::Drawing::Size(784, 25);
+			this->menuStripMain->Size = System::Drawing::Size(789, 25);
 			this->menuStripMain->TabIndex = 1;
 			this->menuStripMain->Text = L"menuStripMain";
 			// 
@@ -357,7 +367,7 @@ namespace ComAssistant {
 			});
 			this->statusStrip1->Location = System::Drawing::Point(0, 440);
 			this->statusStrip1->Name = L"statusStrip1";
-			this->statusStrip1->Size = System::Drawing::Size(784, 22);
+			this->statusStrip1->Size = System::Drawing::Size(789, 22);
 			this->statusStrip1->TabIndex = 2;
 			this->statusStrip1->Text = L"statusStrip1";
 			// 
@@ -402,10 +412,9 @@ namespace ComAssistant {
 			this->groupBoxCom->AutoSize = true;
 			this->groupBoxCom->Controls->Add(this->groupBoxComTransData);
 			this->groupBoxCom->Controls->Add(this->groupBoxComSm);
-			this->groupBoxCom->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->groupBoxCom->Location = System::Drawing::Point(0, 25);
+			this->groupBoxCom->Location = System::Drawing::Point(0, 53);
 			this->groupBoxCom->Name = L"groupBoxCom";
-			this->groupBoxCom->Size = System::Drawing::Size(784, 415);
+			this->groupBoxCom->Size = System::Drawing::Size(787, 318);
 			this->groupBoxCom->TabIndex = 3;
 			this->groupBoxCom->TabStop = false;
 			this->groupBoxCom->Text = L"groupBoxCom";
@@ -617,11 +626,51 @@ namespace ComAssistant {
 			this->comboBox1->Size = System::Drawing::Size(99, 20);
 			this->comboBox1->TabIndex = 0;
 			// 
+			// toolStrip1
+			// 
+			this->toolStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
+				this->toolStripButton1,
+					this->toolStripButton2, this->toolStripButton3
+			});
+			this->toolStrip1->Location = System::Drawing::Point(0, 25);
+			this->toolStrip1->Name = L"toolStrip1";
+			this->toolStrip1->Size = System::Drawing::Size(789, 25);
+			this->toolStrip1->TabIndex = 4;
+			this->toolStrip1->Text = L"toolStrip1";
+			// 
+			// toolStripButton1
+			// 
+			this->toolStripButton1->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
+			this->toolStripButton1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"toolStripButton1.Image")));
+			this->toolStripButton1->ImageTransparentColor = System::Drawing::Color::Magenta;
+			this->toolStripButton1->Name = L"toolStripButton1";
+			this->toolStripButton1->Size = System::Drawing::Size(23, 22);
+			this->toolStripButton1->Text = L"toolStripButton1";
+			// 
+			// toolStripButton2
+			// 
+			this->toolStripButton2->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
+			this->toolStripButton2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"toolStripButton2.Image")));
+			this->toolStripButton2->ImageTransparentColor = System::Drawing::Color::Magenta;
+			this->toolStripButton2->Name = L"toolStripButton2";
+			this->toolStripButton2->Size = System::Drawing::Size(23, 22);
+			this->toolStripButton2->Text = L"toolStripButton2";
+			// 
+			// toolStripButton3
+			// 
+			this->toolStripButton3->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
+			this->toolStripButton3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"toolStripButton3.Image")));
+			this->toolStripButton3->ImageTransparentColor = System::Drawing::Color::Magenta;
+			this->toolStripButton3->Name = L"toolStripButton3";
+			this->toolStripButton3->Size = System::Drawing::Size(23, 22);
+			this->toolStripButton3->Text = L"toolStripButton3";
+			// 
 			// MainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 12);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(784, 462);
+			this->ClientSize = System::Drawing::Size(789, 462);
+			this->Controls->Add(this->toolStrip1);
 			this->Controls->Add(this->groupBoxCom);
 			this->Controls->Add(this->statusStrip1);
 			this->Controls->Add(this->menuStripMain);
@@ -644,6 +693,8 @@ namespace ComAssistant {
 			this->groupBoxComSm->PerformLayout();
 			this->groupBoxComPort->ResumeLayout(false);
 			this->groupBoxComPort->PerformLayout();
+			this->toolStrip1->ResumeLayout(false);
+			this->toolStrip1->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
