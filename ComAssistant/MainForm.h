@@ -45,10 +45,6 @@ namespace ComAssistant {
 	private: System::Windows::Forms::ToolStripMenuItem^  mainToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  fileToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  controleToolStripMenuItem;
-
-
-
-
 	private: System::Windows::Forms::ToolStripMenuItem^  toolStripMenuItem1;
 	private: System::Windows::Forms::ToolStripMenuItem^  tCPCleintToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  tCPServerToolStripMenuItem;
@@ -66,7 +62,7 @@ namespace ComAssistant {
 	private: System::Windows::Forms::ToolStripMenuItem^  charToHexToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  hexToCharToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  luaToolStripMenuItem;
-	private: System::Windows::Forms::StatusStrip^  statusStrip1;
+	private: System::Windows::Forms::StatusStrip^  statusStripMain;
 	private: System::Windows::Forms::ToolStripStatusLabel^  toolStripStatusLabel1;
 	private: System::Windows::Forms::ToolStripStatusLabel^  toolStripStatusLabel2;
 	private: System::Windows::Forms::ToolStripStatusLabel^  toolStripStatusLabel3;
@@ -75,67 +71,39 @@ namespace ComAssistant {
 	private: System::Windows::Forms::ToolStripProgressBar^  toolStripProgressBar1;
 	private: System::Windows::Forms::GroupBox^  groupBoxCom;
 	private: System::Windows::Forms::GroupBox^  groupBoxComTransData;
-
-
 	private: System::Windows::Forms::GroupBox^  groupBoxComSm;
-
 	private: System::Windows::Forms::GroupBox^  groupBoxComPort;
-
-
-
-
-	private: System::Windows::Forms::GroupBox^  groupBox8;
+	private: System::Windows::Forms::GroupBox^  groupBoxSend;
 	private: System::Windows::Forms::TextBox^  textBoxComSend;
-
-	private: System::Windows::Forms::GroupBox^  groupBox7;
+	private: System::Windows::Forms::GroupBox^  groupBoxRecv;
 	private: System::Windows::Forms::TextBox^  textBoxComRecived;
-
 	private: System::Windows::Forms::ComboBox^  comboBox2;
 	private: System::Windows::Forms::Label^  label3;
 	private: System::Windows::Forms::Label^  label2;
 	private: System::Windows::Forms::Label^  lport;
-
-
-	private: System::Windows::Forms::ComboBox^  comboBox1;
+	private: System::Windows::Forms::ComboBox^  comboBoxPortName;
 	private: System::Windows::Forms::ComboBox^  comboBox4;
 	private: System::Windows::Forms::ComboBox^  comboBox3;
 	private: System::Windows::Forms::ComboBox^  comboBox5;
 	private: System::Windows::Forms::Label^  label4;
-
 	private: System::Windows::Forms::Label^  label6;
 	private: System::Windows::Forms::Label^  label5;
 	private: System::Windows::Forms::Button^  portSetOk;
 	private: System::Windows::Forms::ComboBox^  comboBox6;
-	private: System::Windows::Forms::ToolStrip^  toolStrip1;
+	private: System::Windows::Forms::ToolStrip^  toolStripMain;
 	private: System::Windows::Forms::ToolStripButton^  toolStripButton1;
 	private: System::Windows::Forms::ToolStripButton^  toolStripButton2;
 	private: System::Windows::Forms::ToolStripButton^  toolStripButton3;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	private: System::IO::Ports::SerialPort^  serialPort;
+	private: System::ComponentModel::IContainer^  components;
 
 	protected:
-
-
 
 	private:
 		/// <summary>
 		/// 必需的设计器变量。
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -144,6 +112,7 @@ namespace ComAssistant {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->components = (gcnew System::ComponentModel::Container());
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(MainForm::typeid));
 			this->menuStripMain = (gcnew System::Windows::Forms::MenuStrip());
 			this->mainToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -166,7 +135,7 @@ namespace ComAssistant {
 			this->luaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->aboutToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->webToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->statusStrip1 = (gcnew System::Windows::Forms::StatusStrip());
+			this->statusStripMain = (gcnew System::Windows::Forms::StatusStrip());
 			this->toolStripStatusLabel1 = (gcnew System::Windows::Forms::ToolStripStatusLabel());
 			this->toolStripStatusLabel2 = (gcnew System::Windows::Forms::ToolStripStatusLabel());
 			this->toolStripStatusLabel3 = (gcnew System::Windows::Forms::ToolStripStatusLabel());
@@ -175,9 +144,9 @@ namespace ComAssistant {
 			this->toolStripProgressBar1 = (gcnew System::Windows::Forms::ToolStripProgressBar());
 			this->groupBoxCom = (gcnew System::Windows::Forms::GroupBox());
 			this->groupBoxComTransData = (gcnew System::Windows::Forms::GroupBox());
-			this->groupBox8 = (gcnew System::Windows::Forms::GroupBox());
+			this->groupBoxSend = (gcnew System::Windows::Forms::GroupBox());
 			this->textBoxComSend = (gcnew System::Windows::Forms::TextBox());
-			this->groupBox7 = (gcnew System::Windows::Forms::GroupBox());
+			this->groupBoxRecv = (gcnew System::Windows::Forms::GroupBox());
 			this->textBoxComRecived = (gcnew System::Windows::Forms::TextBox());
 			this->groupBoxComSm = (gcnew System::Windows::Forms::GroupBox());
 			this->groupBoxComPort = (gcnew System::Windows::Forms::GroupBox());
@@ -193,20 +162,21 @@ namespace ComAssistant {
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->lport = (gcnew System::Windows::Forms::Label());
-			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
-			this->toolStrip1 = (gcnew System::Windows::Forms::ToolStrip());
+			this->comboBoxPortName = (gcnew System::Windows::Forms::ComboBox());
+			this->toolStripMain = (gcnew System::Windows::Forms::ToolStrip());
 			this->toolStripButton1 = (gcnew System::Windows::Forms::ToolStripButton());
 			this->toolStripButton2 = (gcnew System::Windows::Forms::ToolStripButton());
 			this->toolStripButton3 = (gcnew System::Windows::Forms::ToolStripButton());
+			this->serialPort = (gcnew System::IO::Ports::SerialPort(this->components));
 			this->menuStripMain->SuspendLayout();
-			this->statusStrip1->SuspendLayout();
+			this->statusStripMain->SuspendLayout();
 			this->groupBoxCom->SuspendLayout();
 			this->groupBoxComTransData->SuspendLayout();
-			this->groupBox8->SuspendLayout();
-			this->groupBox7->SuspendLayout();
+			this->groupBoxSend->SuspendLayout();
+			this->groupBoxRecv->SuspendLayout();
 			this->groupBoxComSm->SuspendLayout();
 			this->groupBoxComPort->SuspendLayout();
-			this->toolStrip1->SuspendLayout();
+			this->toolStripMain->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// menuStripMain
@@ -291,7 +261,7 @@ namespace ComAssistant {
 			// tCPCleintToolStripMenuItem
 			// 
 			this->tCPCleintToolStripMenuItem->Name = L"tCPCleintToolStripMenuItem";
-			this->tCPCleintToolStripMenuItem->Size = System::Drawing::Size(152, 22);
+			this->tCPCleintToolStripMenuItem->Size = System::Drawing::Size(144, 22);
 			this->tCPCleintToolStripMenuItem->Text = L"TCPClient";
 			// 
 			// tCPServerToolStripMenuItem
@@ -359,17 +329,17 @@ namespace ComAssistant {
 			this->webToolStripMenuItem->Size = System::Drawing::Size(100, 22);
 			this->webToolStripMenuItem->Text = L"web";
 			// 
-			// statusStrip1
+			// statusStripMain
 			// 
-			this->statusStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(6) {
+			this->statusStripMain->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(6) {
 				this->toolStripStatusLabel1,
 					this->toolStripStatusLabel2, this->toolStripStatusLabel3, this->toolStripStatusLabel4, this->toolStripStatusLabel5, this->toolStripProgressBar1
 			});
-			this->statusStrip1->Location = System::Drawing::Point(0, 440);
-			this->statusStrip1->Name = L"statusStrip1";
-			this->statusStrip1->Size = System::Drawing::Size(789, 22);
-			this->statusStrip1->TabIndex = 2;
-			this->statusStrip1->Text = L"statusStrip1";
+			this->statusStripMain->Location = System::Drawing::Point(0, 440);
+			this->statusStripMain->Name = L"statusStripMain";
+			this->statusStripMain->Size = System::Drawing::Size(789, 22);
+			this->statusStripMain->TabIndex = 2;
+			this->statusStripMain->Text = L"statusStripMain";
 			// 
 			// toolStripStatusLabel1
 			// 
@@ -421,8 +391,8 @@ namespace ComAssistant {
 			// 
 			// groupBoxComTransData
 			// 
-			this->groupBoxComTransData->Controls->Add(this->groupBox8);
-			this->groupBoxComTransData->Controls->Add(this->groupBox7);
+			this->groupBoxComTransData->Controls->Add(this->groupBoxSend);
+			this->groupBoxComTransData->Controls->Add(this->groupBoxRecv);
 			this->groupBoxComTransData->Location = System::Drawing::Point(209, 21);
 			this->groupBoxComTransData->Name = L"groupBoxComTransData";
 			this->groupBoxComTransData->Size = System::Drawing::Size(572, 277);
@@ -430,16 +400,16 @@ namespace ComAssistant {
 			this->groupBoxComTransData->TabStop = false;
 			this->groupBoxComTransData->Text = L"ComTransData";
 			// 
-			// groupBox8
+			// groupBoxSend
 			// 
-			this->groupBox8->AutoSize = true;
-			this->groupBox8->Controls->Add(this->textBoxComSend);
-			this->groupBox8->Location = System::Drawing::Point(7, 135);
-			this->groupBox8->Name = L"groupBox8";
-			this->groupBox8->Size = System::Drawing::Size(550, 114);
-			this->groupBox8->TabIndex = 1;
-			this->groupBox8->TabStop = false;
-			this->groupBox8->Text = L"Send Data";
+			this->groupBoxSend->AutoSize = true;
+			this->groupBoxSend->Controls->Add(this->textBoxComSend);
+			this->groupBoxSend->Location = System::Drawing::Point(7, 135);
+			this->groupBoxSend->Name = L"groupBoxSend";
+			this->groupBoxSend->Size = System::Drawing::Size(550, 114);
+			this->groupBoxSend->TabIndex = 1;
+			this->groupBoxSend->TabStop = false;
+			this->groupBoxSend->Text = L"Send Data";
 			// 
 			// textBoxComSend
 			// 
@@ -452,16 +422,16 @@ namespace ComAssistant {
 			this->textBoxComSend->Size = System::Drawing::Size(537, 67);
 			this->textBoxComSend->TabIndex = 0;
 			// 
-			// groupBox7
+			// groupBoxRecv
 			// 
-			this->groupBox7->AutoSize = true;
-			this->groupBox7->Controls->Add(this->textBoxComRecived);
-			this->groupBox7->Location = System::Drawing::Point(7, 20);
-			this->groupBox7->Name = L"groupBox7";
-			this->groupBox7->Size = System::Drawing::Size(550, 114);
-			this->groupBox7->TabIndex = 0;
-			this->groupBox7->TabStop = false;
-			this->groupBox7->Text = L"Recived Data";
+			this->groupBoxRecv->AutoSize = true;
+			this->groupBoxRecv->Controls->Add(this->textBoxComRecived);
+			this->groupBoxRecv->Location = System::Drawing::Point(7, 20);
+			this->groupBoxRecv->Name = L"groupBoxRecv";
+			this->groupBoxRecv->Size = System::Drawing::Size(550, 114);
+			this->groupBoxRecv->TabIndex = 0;
+			this->groupBoxRecv->TabStop = false;
+			this->groupBoxRecv->Text = L"Recived Data";
 			// 
 			// textBoxComRecived
 			// 
@@ -473,6 +443,7 @@ namespace ComAssistant {
 			this->textBoxComRecived->ScrollBars = System::Windows::Forms::ScrollBars::Horizontal;
 			this->textBoxComRecived->Size = System::Drawing::Size(537, 67);
 			this->textBoxComRecived->TabIndex = 0;
+			this->textBoxComRecived->TextChanged += gcnew System::EventHandler(this, &MainForm::textBoxComRecived_TextChanged);
 			// 
 			// groupBoxComSm
 			// 
@@ -501,7 +472,7 @@ namespace ComAssistant {
 			this->groupBoxComPort->Controls->Add(this->label3);
 			this->groupBoxComPort->Controls->Add(this->label2);
 			this->groupBoxComPort->Controls->Add(this->lport);
-			this->groupBoxComPort->Controls->Add(this->comboBox1);
+			this->groupBoxComPort->Controls->Add(this->comboBoxPortName);
 			this->groupBoxComPort->Dock = System::Windows::Forms::DockStyle::Top;
 			this->groupBoxComPort->Location = System::Drawing::Point(3, 17);
 			this->groupBoxComPort->Name = L"groupBoxComPort";
@@ -559,6 +530,7 @@ namespace ComAssistant {
 			this->comboBox2->Name = L"comboBox2";
 			this->comboBox2->Size = System::Drawing::Size(99, 20);
 			this->comboBox2->TabIndex = 4;
+			this->comboBox2->SelectedIndexChanged += gcnew System::EventHandler(this, &MainForm::comboBox2_SelectedIndexChanged);
 			// 
 			// label6
 			// 
@@ -611,32 +583,33 @@ namespace ComAssistant {
 			// lport
 			// 
 			this->lport->AutoSize = true;
-			this->lport->Location = System::Drawing::Point(11, 23);
+			this->lport->Location = System::Drawing::Point(11, 19);
 			this->lport->Name = L"lport";
 			this->lport->Size = System::Drawing::Size(29, 12);
 			this->lport->TabIndex = 1;
 			this->lport->Text = L"port";
 			this->lport->Click += gcnew System::EventHandler(this, &MainForm::label1_Click);
 			// 
-			// comboBox1
+			// comboBoxPortName
 			// 
-			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Location = System::Drawing::Point(89, 16);
-			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(99, 20);
-			this->comboBox1->TabIndex = 0;
+			this->comboBoxPortName->FormattingEnabled = true;
+			this->comboBoxPortName->Location = System::Drawing::Point(89, 16);
+			this->comboBoxPortName->Name = L"comboBoxPortName";
+			this->comboBoxPortName->Size = System::Drawing::Size(99, 20);
+			this->comboBoxPortName->TabIndex = 0;
+			this->comboBoxPortName->SelectedIndexChanged += gcnew System::EventHandler(this, &MainForm::comboBox1_SelectedIndexChanged);
 			// 
-			// toolStrip1
+			// toolStripMain
 			// 
-			this->toolStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
+			this->toolStripMain->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
 				this->toolStripButton1,
 					this->toolStripButton2, this->toolStripButton3
 			});
-			this->toolStrip1->Location = System::Drawing::Point(0, 25);
-			this->toolStrip1->Name = L"toolStrip1";
-			this->toolStrip1->Size = System::Drawing::Size(789, 25);
-			this->toolStrip1->TabIndex = 4;
-			this->toolStrip1->Text = L"toolStrip1";
+			this->toolStripMain->Location = System::Drawing::Point(0, 25);
+			this->toolStripMain->Name = L"toolStripMain";
+			this->toolStripMain->Size = System::Drawing::Size(789, 25);
+			this->toolStripMain->TabIndex = 4;
+			this->toolStripMain->Text = L"toolStripMain";
 			// 
 			// toolStripButton1
 			// 
@@ -670,31 +643,31 @@ namespace ComAssistant {
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 12);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(789, 462);
-			this->Controls->Add(this->toolStrip1);
+			this->Controls->Add(this->toolStripMain);
 			this->Controls->Add(this->groupBoxCom);
-			this->Controls->Add(this->statusStrip1);
+			this->Controls->Add(this->statusStripMain);
 			this->Controls->Add(this->menuStripMain);
 			this->Name = L"MainForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"MainForm";
 			this->menuStripMain->ResumeLayout(false);
 			this->menuStripMain->PerformLayout();
-			this->statusStrip1->ResumeLayout(false);
-			this->statusStrip1->PerformLayout();
+			this->statusStripMain->ResumeLayout(false);
+			this->statusStripMain->PerformLayout();
 			this->groupBoxCom->ResumeLayout(false);
 			this->groupBoxCom->PerformLayout();
 			this->groupBoxComTransData->ResumeLayout(false);
 			this->groupBoxComTransData->PerformLayout();
-			this->groupBox8->ResumeLayout(false);
-			this->groupBox8->PerformLayout();
-			this->groupBox7->ResumeLayout(false);
-			this->groupBox7->PerformLayout();
+			this->groupBoxSend->ResumeLayout(false);
+			this->groupBoxSend->PerformLayout();
+			this->groupBoxRecv->ResumeLayout(false);
+			this->groupBoxRecv->PerformLayout();
 			this->groupBoxComSm->ResumeLayout(false);
 			this->groupBoxComSm->PerformLayout();
 			this->groupBoxComPort->ResumeLayout(false);
 			this->groupBoxComPort->PerformLayout();
-			this->toolStrip1->ResumeLayout(false);
-			this->toolStrip1->PerformLayout();
+			this->toolStripMain->ResumeLayout(false);
+			this->toolStripMain->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -715,6 +688,12 @@ private: System::Void groupBox3_Enter(System::Object^  sender, System::EventArgs
 private: System::Void label4_Click(System::Object^  sender, System::EventArgs^  e) {
 }
 private: System::Void label1_Click(System::Object^  sender, System::EventArgs^  e) {
+}
+private: System::Void textBoxComRecived_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+}
+private: System::Void comboBox1_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
+}
+private: System::Void comboBox2_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
 }
 };
 }
